@@ -3,5 +3,6 @@
 const commonConfig = require('./webpack.common.config');
 
 module.exports = webpackMerge(commonConfig(true), {
-    mode: 'development'
+    mode: 'development',
+    devtool: "source-map"
 });

@@ -1,5 +1,5 @@
 {
-  "name": "testProject",
+  "name": "test_project",
   "version": "1.0.0",
   "description": "just project",
   "main": "index.js",
@@ -49,8 +49,8 @@
     "html-webpack-plugin": "^4.0.1",
     "husky": "^4.2.3",
     "imports-loader": "^0.7.1",
-    "less": "^3.9.0",
-    "less-loader": "^4.1.0",
+    "less": "3.7.1",
+    "less-loader": "4.1.0",
     "lint-staged": "^10.0.7",
     "mini-css-extract-plugin": "^0.5.0",
     "optimize-css-assets-webpack-plugin": "^5.0.3",

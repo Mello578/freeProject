@@ -33,6 +33,7 @@ module.exports = {
             }
         ],
         'import/first': 'error',
+        "import/no-unresolved": "off",
         'prettier/prettier': 'error',
         'react/prop-types': 'off',
         'react-hooks/rules-of-hooks': 'error',
