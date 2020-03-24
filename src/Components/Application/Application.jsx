@@ -7,14 +7,40 @@ import style from './Application.module.less';
 
 export const ApplicationContext = React.createContext(null);
 
-const stubData = ['Дело на утро', 'Сходить затусить', 'Сходить погулять', 'Дело на вечер'];
+const stubData = [
+    {
+        id: 0,
+        title: 'Дело на утро',
+        description: 'умыться, побриться, почистить смски'
+    },
+    {
+        id: 1,
+        title: 'Дело на вечер',
+        description: 'что то есть'
+    },
+    {
+        id: 2,
+        title: 'Почитать',
+        description: 'прочесть стопицот книг, вместо сна. И еды'
+    },
+    {
+        id: 3,
+        title: 'Заняться делом',
+        description: 'покодить'
+    }
+];
 
 export const Application = () => {
     const [listCases, setListCases] = useState(stubData);
 
     const context = {
         listCases,
-        setListCases
+        setListCases,
+        editedCase: {
+            id: null,
+            title: '',
+            description: ''
+        }
     };
 
     return (
