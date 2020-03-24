@@ -35,12 +35,7 @@ export const Application = () => {
 
     const context = {
         listCases,
-        setListCases,
-        editedCase: {
-            id: null,
-            title: '',
-            description: ''
-        }
+        setListCases
     };
 
     return (
