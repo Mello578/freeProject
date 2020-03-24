@@ -2,7 +2,6 @@
 
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const CaseSensitivePathsPlugin = require('case-sensitive-paths-webpack-plugin');
-const {CleanWebpackPlugin} = require('clean-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 const helpers = require('./helpers.js');
@@ -21,17 +20,19 @@ module.exports = devMode => {
         },
         resolve: {
             modules: [nodeModules],
-            extensions: ['*', '.js', '.jsx']
+            extensions: ['*', '.js', '.jsx', '.less']
         },
         module: {
             rules: [
                  {
                     test: /\.jsx?$/,
+                    exclude: /node_modules/,
                     use: [
                         {
                             loader: 'babel-loader',
                             options: {
-                                presets: ['@babel/preset-react', '@babel/preset-env']
+                                presets: ['@babel/preset-react', '@babel/preset-env'],
+                                sourceMap: devMode
                             }
                         }
                     ],
@@ -83,12 +84,13 @@ module.exports = devMode => {
                 },
                 {
                     test: /\.(jpg|png|gif)$/,
+                    exclude: /\.less$/,
                     loader: 'file-loader'
                 },
             ]
         },
         plugins: [
-            new CleanWebpackPlugin(),
+            // new CleanWebpackPlugin(),
             new MiniCssExtractPlugin({
                 filename: devMode ? 'main.css' : '[name]-[hash].css',
                 orderWarning: false
