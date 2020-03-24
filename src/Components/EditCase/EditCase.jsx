@@ -29,18 +29,22 @@ export const EditCase = ({ editableCase }) => {
     };
 
     return (
-        <div className={style.container}>
+        <div>
             <h1>Редактирование записи</h1>
-            <TextInputField startValue={editableCase.title} changeEvent={changeTitle}>
-                <div>
-                    <input type="text" name="title" />
+            <div className={style.editContainer}>
+                <div className={style.editFieldContainer}>
+                    <label htmlFor="title">Редактировать заголовок</label>
+                    <TextInputField value={caseInfo.title} changeEvent={changeTitle}>
+                        <input className={style.editLabel} type="text" name="title" />
+                    </TextInputField>
                 </div>
-            </TextInputField>
-            <TextInputField startValue={editableCase.description} changeEvent={changeDescription}>
-                <div>
-                    <textarea name="description" cols="30" rows="10" />
+                <div className={style.editFieldContainer}>
+                    <label htmlFor="title">Редактировать описание</label>
+                    <TextInputField value={caseInfo.description} changeEvent={changeDescription}>
+                        <textarea className={style.editDescription} name="description" />
+                    </TextInputField>
                 </div>
-            </TextInputField>
+            </div>
         </div>
     );
 };
