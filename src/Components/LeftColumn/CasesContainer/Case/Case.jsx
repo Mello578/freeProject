@@ -1,31 +1,15 @@
-import React, { useContext, useEffect, useState } from 'react';
+import React from 'react';
 
-import { ModalWindow } from '../../../shared/ModalWindow';
-import { EditCase } from '../../../EditCase';
-import { ApplicationContext } from '../../../Application';
+import { stopBubbling } from '../../../../utils';
 
 import style from './Case.module.less';
 
-export const Case = ({ caseInfo }) => {
-    const cases = useContext(ApplicationContext).listCases;
-    const [modalToggle, setModalToggle] = useState(false);
-    const [editableCase, setEditableCase] = useState(false);
-    const idSelector = `case-${caseInfo.id}`;
-    useEffect(() => {
-        const caseTitleElement = document.querySelector(`#${idSelector}`);
-        caseTitleElement.addEventListener('mouseup', () => {
-            setEditableCase(cases.find(item => item.id === caseInfo.id));
-            setModalToggle(prevState => !prevState);
-        });
-    }, []);
+export const Case = ({ caseInfo, editCase }) => {
     return (
-        <>
-            <div className={`${style.case} js-caseTitle`} id={idSelector}>
+        <div onClick={stopBubbling}>
+            <div className={`${style.case} js-caseTitle`} id={`case-${caseInfo.id}`} onClick={editCase}>
                 <span>{caseInfo.title}</span>
             </div>
-            <ModalWindow visible={modalToggle} setToggle={setModalToggle}>
-                <EditCase editableCase={editableCase} />
-            </ModalWindow>
-        </>
+        </div>
     );
 };

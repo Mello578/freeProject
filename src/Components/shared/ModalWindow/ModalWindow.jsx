@@ -1,14 +1,12 @@
 import React from 'react';
 
+import { stopBubbling } from '../../../utils';
+
 import style from './ModalWindow.module.less';
 
 export const ModalWindow = ({ visible, setToggle, children }) => {
     const closeModal = () => {
         setToggle(false);
-    };
-
-    const stopBubbling = e => {
-        e.stopPropagation();
     };
 
     return (

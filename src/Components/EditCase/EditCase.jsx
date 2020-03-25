@@ -3,7 +3,7 @@ import React, { useContext, useState } from 'react';
 import { ApplicationContext } from '../Application';
 import { TextInputField } from '../shared/TextInputField';
 import { Case } from '../Application/utils/modelCases';
-import { mutableContext } from '../../utils/mutableContext';
+import { mutableContext } from '../../utils';
 
 import style from './EditCase.module.less';
 import { updateCase } from './utils/updateCase';

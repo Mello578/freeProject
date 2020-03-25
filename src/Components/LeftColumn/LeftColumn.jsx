@@ -1,5 +1,7 @@
 import React from 'react';
 
+import { ModalEdit } from '../shared/ModalEdit';
+
 import style from './LeftColumn.module.less';
 import { FieldCreate } from './FieldCreate';
 import { CasesContainer } from './CasesContainer';
@@ -9,7 +11,9 @@ export const LeftColumn = () => {
         <div className={style.column}>
             <span className={style.label}>Записатор</span>
             <FieldCreate />
-            <CasesContainer />
+            <ModalEdit>
+                <CasesContainer />
+            </ModalEdit>
         </div>
     );
 };
