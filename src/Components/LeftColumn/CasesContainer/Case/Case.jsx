@@ -23,7 +23,6 @@ export const Case = ({ caseInfo }) => {
             <div className={`${style.case} js-caseTitle`} id={idSelector}>
                 <span>{caseInfo.title}</span>
             </div>
-
             <ModalWindow visible={modalToggle} setToggle={setModalToggle}>
                 <EditCase editableCase={editableCase} />
             </ModalWindow>

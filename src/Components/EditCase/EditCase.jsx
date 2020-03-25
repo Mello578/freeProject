@@ -3,10 +3,13 @@ import React, { useContext, useState } from 'react';
 import { ApplicationContext } from '../Application';
 import { TextInputField } from '../shared/TextInputField';
 import { Case } from '../Application/utils/modelCases';
+import { mutableContext } from '../../utils/mutableContext';
 
 import style from './EditCase.module.less';
+import { updateCase } from './utils/updateCase';
+import { deleteCase } from './utils/deleteCase';
 
-export const EditCase = ({ editableCase }) => {
+export const EditCase = ({ editableCase, closeModal }) => {
     const [caseInfo, setCaseInfo] = useState(editableCase);
     const { listCases, setListCases } = useContext(ApplicationContext);
 
@@ -20,12 +23,18 @@ export const EditCase = ({ editableCase }) => {
         });
 
     const changeCases = () => {
-        //хрень, чтоб сохранялся порядок и не происходило мутирование внутри сонтекста
-        const allCase = [...listCases];
-        const editedCase = allCase.find(item => item.id === caseInfo.id);
-        Object.assign(editedCase, caseInfo);
-        setListCases(allCase);
+        setListCases(mutableContext(listCases, updateCase, caseInfo));
         setCaseInfo(new Case());
+    };
+
+    const onEdit = () => {
+        changeCases();
+        closeModal();
+    };
+
+    const onDelete = () => {
+        setListCases(mutableContext(listCases, deleteCase, caseInfo));
+        closeModal();
     };
 
     return (
@@ -44,6 +53,17 @@ export const EditCase = ({ editableCase }) => {
                         <textarea className={style.editDescription} name="description" />
                     </TextInputField>
                 </div>
+            </div>
+            <div className={style.buttonContainer}>
+                <button className={`${style.buttons} ${style.delete}`} onClick={onDelete}>
+                    Удалить
+                </button>
+                <button className={`${style.buttons} ${style.cancel}`} onClick={closeModal}>
+                    Отмена
+                </button>
+                <button className={`${style.buttons} ${style.edit}`} onClick={onEdit}>
+                    Изменить
+                </button>
             </div>
         </div>
     );

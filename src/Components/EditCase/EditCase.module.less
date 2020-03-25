@@ -30,3 +30,34 @@
   border-radius: 3px;
 }
 
+.buttonContainer {
+  position: absolute;
+  bottom: 15px;
+  right: 50px;
+}
+
+.buttons {
+  height: 30px;
+  width: 80px;
+  border-radius: 2px;
+  margin-left: 5px;
+  border: 1px solid rgba(128, 128, 128, 0.35);
+
+  &.edit {
+    background: #8bf18b;
+  }
+
+  &.cancel {
+
+  }
+
+  &.delete {
+    background: rgba(255, 38, 30, 0.63);
+  }
+
+  &:active {
+    position: relative;
+    top: 1px;
+    left: -1px;
+  }
+}
