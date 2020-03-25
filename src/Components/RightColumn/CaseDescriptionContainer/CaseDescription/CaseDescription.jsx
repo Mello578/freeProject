@@ -4,7 +4,7 @@ import { stopBubbling } from '../../../../utils';
 
 import style from './CaseDescription.module.less';
 
-export const CaseDescription = ({ id, title, description, editCase }) => {
+export const CaseDescription = React.memo(({ id, title, description, editCase }) => {
     return (
         <div onClick={stopBubbling}>
             <div className={style.container} id={`description-${id}`} onClick={editCase}>
@@ -15,4 +15,4 @@ export const CaseDescription = ({ id, title, description, editCase }) => {
             </div>
         </div>
     );
-};
+});

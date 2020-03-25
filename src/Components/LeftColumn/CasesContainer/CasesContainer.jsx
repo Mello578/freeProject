@@ -11,7 +11,7 @@ export const CasesContainer = ({ editCase }) => {
     return (
         <div className={style.container}>
             {cases.map((item, key) => (
-                <Case key={key} caseInfo={item} editCase={editCase} />
+                <Case key={key} id={item.id} title={item.title} editCase={editCase} />
             ))}
         </div>
     );
