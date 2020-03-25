@@ -1,13 +1,17 @@
 import React from 'react';
 
+import { stopBubbling } from '../../../../utils';
+
 import style from './CaseDescription.module.less';
 
-export const CaseDescription = ({ id, title, description }) => {
+export const CaseDescription = ({ id, title, description, editCase }) => {
     return (
-        <div className={style.container} id={id}>
-            <span className={style.title}>{title}</span>
-            <div className={style.fieldDescription}>
-                <span className={style.description}>{description}</span>
+        <div onClick={stopBubbling}>
+            <div className={style.container} id={`description-${id}`} onClick={editCase}>
+                <span className={style.title}>{title}</span>
+                <div className={style.fieldDescription}>
+                    <span className={style.description}>{description}</span>
+                </div>
             </div>
         </div>
     );
