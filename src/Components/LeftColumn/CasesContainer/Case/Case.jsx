@@ -4,7 +4,7 @@ import { stopBubbling } from '../../../../utils';
 
 import style from './Case.module.less';
 
-export const Case = React.memo(({ id, title, editCase }) => {
+function Component({ id, title, editCase }) {
     return (
         <div onClick={stopBubbling}>
             <div className={style.case} id={`case-${id}`} onClick={editCase}>
@@ -12,4 +12,6 @@ export const Case = React.memo(({ id, title, editCase }) => {
             </div>
         </div>
     );
-});
+}
+
+export const Case = React.memo(Component);

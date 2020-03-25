@@ -4,7 +4,7 @@
   "description": "just project",
   "main": "index.js",
   "scripts": {
-    "watch": "webpack --config Webpack/webpack.dev.config.js --watch",
+    "webpack-dev-server": "webpack-dev-server --config Webpack/webpack.dev.config.js --progress --color",
     "webpack-prod": "webpack --config Webpack/webpack.prod.config.js --display=minimal --progress",
     "eslint-js": "eslint --fix src/**/*.js?(x)"
   },
@@ -59,6 +59,7 @@
     "terser-webpack-plugin": "^2.1.0",
     "webpack": "^4.29.0",
     "webpack-cli": "3.3.0",
+    "webpack-dev-server": "^3.1.14",
     "webpack-merge": "^4.2.1"
   }
 }

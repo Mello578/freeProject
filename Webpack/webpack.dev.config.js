@@ -4,5 +4,13 @@ const commonConfig = require('./webpack.common.config');
 
 module.exports = webpackMerge(commonConfig(true), {
     mode: 'development',
-    devtool: "source-map"
+    devtool: "source-map",
+    devServer: {
+        publicPath: '/dist',
+        host: 'localhost',
+        port: 8081,
+        headers: {
+            'Access-Control-Allow-Origin': '*'
+        }
+    }
 });

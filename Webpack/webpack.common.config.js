@@ -2,6 +2,7 @@
 
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const CaseSensitivePathsPlugin = require('case-sensitive-paths-webpack-plugin');
+const {CleanWebpackPlugin} = require('clean-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 const helpers = require('./helpers.js');
@@ -16,7 +17,7 @@ module.exports = devMode => {
         },
         output: {
             filename: devMode ? '[name].js' : '[name]-[hash].js',
-            publicPath: '/dist'
+            publicPath: devMode ? 'http://localhost:8081/dist' : './',
         },
         resolve: {
             modules: [nodeModules],
@@ -90,20 +91,19 @@ module.exports = devMode => {
             ]
         },
         plugins: [
-            // new CleanWebpackPlugin(),
+            new CleanWebpackPlugin(),
             new MiniCssExtractPlugin({
                 filename: devMode ? 'main.css' : '[name]-[hash].css',
                 orderWarning: false
             }),
             new CaseSensitivePathsPlugin(),
             new HtmlWebpackPlugin({
-                inject: false,
-                template: './src/static/index.html',
+                inject: true,
+                template: './src/static/templates/index.html',
                 filename: 'index.html',
                 files: {
-                    // todo надо разобраться с хешами для прод сборки
-                    scripts: devMode ? 'main.js' : 'main-[hash].js',
-                    styles: devMode ? 'main.css' : 'main-[hash].css'
+                    scripts: devMode ? 'http://localhost:8081/dist/main.js' : 'main-[hash].js',
+                    styles: devMode ? 'http://localhost:8081/dist/main.css' : 'main-[hash].css'
                 }
             })
         ]
